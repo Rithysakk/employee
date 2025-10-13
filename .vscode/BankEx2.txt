@@ -1,0 +1,90 @@
+// Complete Bank and BankAccount Program
+
+class BankAccount {
+  final int id; // unique ID for each account
+  final String ownerName; // account owner
+  double _balance = 0; // starting balance (private)
+
+  BankAccount({
+    required this.id,
+    required this.ownerName,
+  });
+
+  // Returns the current balance
+  String get balance => 'Balance: \$$_balance';
+
+  // Add money to account
+  void credit(double amount) {
+    if (amount <= 0) {
+      throw Exception('Credit amount must be positive!');
+    }
+    _balance += amount;
+  }
+
+  // Withdraw money from account
+  void withdraw(double amount) {
+    if (amount <= 0) {
+      throw Exception('Withdraw amount must be positive!');
+    }
+    if (amount > _balance) {
+      throw Exception('Insufficient balance for withdrawal!');
+    }
+    _balance -= amount;
+  }
+}
+
+// The Bank class manages multiple accounts
+class Bank {
+  final String name;
+  final Map<int, BankAccount> _accounts = {}; // store accounts by ID
+
+  Bank({required this.name});
+
+  // Create a new account
+  BankAccount createAccount(int accountId, String accountOwner) {
+    if (_accounts.containsKey(accountId)) {
+      throw Exception('Account with ID $accountId already exists!');
+    }
+
+    final newAccount = BankAccount(id: accountId, ownerName: accountOwner);
+    _accounts[accountId] = newAccount;
+    return newAccount;
+  }
+
+  // Optional: Retrieve account by ID
+  BankAccount? getAccount(int accountId) => _accounts[accountId];
+}
+
+// Main program
+void main() {
+  // Create a new bank
+  Bank myBank = Bank(name: "CADT Bank");
+
+  // Create a new account
+  BankAccount ronanAccount = myBank.createAccount(100, 'Ronan');
+
+  // Display starting balance
+  print(ronanAccount.balance); // Balance: $0
+
+  // Add money
+  ronanAccount.credit(100);
+  print(ronanAccount.balance); // Balance: $100
+
+  // Withdraw some money
+  ronanAccount.withdraw(50);
+  print(ronanAccount.balance); // Balance: $50
+
+  // Try withdrawing too much (should throw an exception)
+  try {
+    ronanAccount.withdraw(75);
+  } catch (e) {
+    print(e); // Output: `Insufficient balance for withdrawal!`
+  }
+
+  // Try creating a duplicate account (should throw an exception)
+  try {
+    myBank.createAccount(100, 'Honlgy');
+  } catch (e) {
+    print(e); // Output: Account with ID 100 already exists!
+  }
+}
