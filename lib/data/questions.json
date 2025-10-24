@@ -1,0 +1,46 @@
+{
+  "questions": [
+    {
+      "title": "Color of a banana?",
+      "choices": ["Yellow", "Red", "Blue"],
+      "goodChoice": "Yellow",
+      "point": 10
+    },
+    {
+      "title": "How many days are in a week?",
+      "choices": ["5", "7", "10"],
+      "goodChoice": "7",
+      "point": 10
+    },
+    {
+      "title": "What sound does a cat make?",
+      "choices": ["Woof", "Meow", "Moo"],
+      "goodChoice": "Meow",
+      "point": 10
+    },
+    {
+      "title": "What shape has 3 sides?",
+      "choices": ["Circle", "Triangle", "Square"],
+      "goodChoice": "Triangle",
+      "point": 10
+    },
+    {
+      "title": "Which planet do we live on?",
+      "choices": ["Mars", "Venus", "Earth"],
+      "goodChoice": "Earth",
+      "point": 20
+    },
+    {
+      "title": "What is 10 divided by 2?",
+      "choices": ["2", "5", "10"],
+      "goodChoice": "5",
+      "point": 20
+    },
+    {
+      "title": "Which animal is known as the King of the Jungle?",
+      "choices": ["Tiger", "Lion", "Elephant"],
+      "goodChoice": "Lion",
+      "point": 20
+    }
+  ]
+}
